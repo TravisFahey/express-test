@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const { MongoMemoryServer } = require('mongodb-memory-server');
+const seedBlogPosts = require('./seed'); // <-- Import seeding function
 
 async function connectToMemoryDB() {
   const mongoServer = await MongoMemoryServer.create();
@@ -12,7 +13,8 @@ async function connectToMemoryDB() {
 
   console.log('✅ Connected to in-memory MongoDB');
 
-  return mongoServer; // You can stop this later if needed
+  // Seed data after connection is established
+  await seedBlogPosts();
 }
 
 module.exports = connectToMemoryDB;

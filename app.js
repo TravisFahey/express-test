@@ -5,8 +5,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 // 🧠 Connect to in-memory MongoDB
-var connectToMemoryDB = require('./db/memory'); // <-- Add this line
-connectToMemoryDB(); // <-- Call the function to connect
+var connectToMemoryDB = require('./data/memory'); 
+connectToMemoryDB();
 
 
 var homeRouter = require('./routes/home');
@@ -27,7 +27,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', homeRouter);
 
-// catch 404 and forward to error handler
 // Catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
