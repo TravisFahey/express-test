@@ -4,6 +4,11 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+// 🧠 Connect to in-memory MongoDB
+var connectToMemoryDB = require('./db/memory'); // <-- Add this line
+connectToMemoryDB(); // <-- Call the function to connect
+
+
 var homeRouter = require('./routes/home');
 
 var app = express();
