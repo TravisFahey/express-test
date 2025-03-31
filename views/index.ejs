@@ -6,3 +6,23 @@
         <p>Welcome to <%= title %>!</p>
     </div>
 </div>
+
+<div class="row justify-content-center mt-4">
+    <div class="col-md-8">
+      <h2>Latest Blog Posts</h2>
+  
+      <% if (posts && posts.length === 0) { %>
+        <p>No blog posts yet.</p>
+      <% } else if (posts) { %>
+        <% posts.forEach(post => { %>
+          <div class="card mb-3">
+            <div class="card-body">
+              <h5 class="card-title"><%= post.title %></h5>
+              <p class="card-text"><%= post.content %></p>
+              <p class="card-text"><small class="text-muted">By <%= post.author %> on <%= post.createdAt.toLocaleDateString() %></small></p>
+            </div>
+          </div>
+        <% }) %>
+      <% } %>
+    </div>
+  </div>

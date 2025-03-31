@@ -2,10 +2,7 @@ const blogPost = require("../models/blogPost");
 
 exports.getAllPosts = async (req, res) => {
     const posts = await blogPost.find().sort({ createdAt: -1});
-    res.render('blog', {
-        title: 'All Blog Posts',
-        posts
-      });
+    res.Json(posts);
 }
 
 // POST /blog - Create a new post
