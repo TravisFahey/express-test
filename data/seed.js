@@ -1,4 +1,4 @@
-const BlogPost = require('../models/blogPost');
+const BlogPost = require('../models/BlogPost');
 
 // This function creates and saves a few dummy posts
 async function seedBlogPosts() {

@@ -1,13 +1,24 @@
-const blogPost = require("../models/blogPost");
+const BlogPost = require('../models/BlogPost');
 
+// GET /blog - return all blog posts as JSON
 exports.getAllPosts = async (req, res) => {
-    const posts = await blogPost.find().sort({ createdAt: -1});
-    res.Json(posts);
-}
+  try {
+    const posts = await BlogPost.find().sort({ createdAt: -1 });
+    res.json(posts);
+  } catch (err) {
+    console.error('Error fetching posts:', err);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};
 
-// POST /blog - Create a new post
+// POST /blog - create a new post
 exports.createPost = async (req, res) => {
+  try {
     const { title, content, author } = req.body;
-    await blogPost.create({ title, content, author });
-    res.redirect('/blog');
-  };
+    const newPost = await BlogPost.create({ title, content, author });
+    res.status(200).json(newPost);
+  } catch (err) {
+    console.error('Error creating post:', err);
+    res.status(500).json({ error: 'Failed to create post' });
+  }
+};

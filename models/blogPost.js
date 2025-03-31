@@ -8,5 +8,5 @@ const blogPostSchema = new mongoose.Schema({
   createdAt: { type: Date, default: Date.now }      
 });
 
-// Export the model so we can use it elsewhere
-module.exports = mongoose.model('BlogPost', blogPostSchema);
+// ✅ Use existing model if already compiled
+module.exports = mongoose.models.BlogPost || mongoose.model('BlogPost', blogPostSchema);

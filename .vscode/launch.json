@@ -1,22 +1,42 @@
 {
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "name": "Launch Express Server",
-            "type": "node",
-            "request": "launch",
-            "program": "${workspaceFolder}/bin/www",
-            "restart": true,
-            "env": {
-                "NODE_ENV": "development"
-            },
-            "console": "integratedTerminal"
-        },
-        {
-            "name": "Attach to Running Server",
-            "type": "node",
-            "request": "attach",
-            "port": 9229
-        }
-    ]
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug with Nodemon",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "nodemon",
+      "program": "${workspaceFolder}/bin/www",
+      "restart": true,
+      "autoAttachChildProcesses": true,
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "skipFiles": ["<node_internals>/**"]
+    },
+    {
+      "name": "Attach to Running Server (nodemon)",
+      "type": "node",
+      "request": "attach",
+      "port": 9229,
+      "restart": true,
+      "skipFiles": ["<node_internals>/**"]
+    },
+    {
+      "name": "Launch Express Server",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/bin/www",
+      "restart": true,
+      "autoAttachChildProcesses": true,
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "console": "integratedTerminal",
+      "outFiles": ["${workspaceFolder}/**/*.js"],
+      "skipFiles": ["<node_internals>/**"]
+    }
+  ]
 }

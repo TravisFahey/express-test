@@ -1,4 +1,4 @@
-const BlogPost = require("../models/blogPost");
+const BlogPost = require("../models/BlogPost");
 
 const renderHomePage = async (req, res) => {
     const posts = await BlogPost.find().sort({ createdAt: -1 }); // show latest 3
